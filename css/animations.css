@@ -1,0 +1,254 @@
+/* ============================================================
+   ASSISHMON C S — PORTFOLIO
+   Animations Stylesheet
+   ============================================================ */
+
+/* ============================================================
+   HERO ENTRANCE ORCHESTRATION
+   ============================================================ */
+
+/* Profile reveal animation */
+@keyframes profileRevealIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(20px);
+    filter: blur(12px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-4px);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.profile-reveal-wrap.animate-in {
+  animation: profileRevealIn 1s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+
+/* Hero text reveal */
+@keyframes heroTextIn {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+.hero-text.animate-in {
+  animation: heroTextIn 0.9s 0.6s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+/* Staggered hero children */
+.hero-text .hero-greeting { opacity: 0; animation: fadeSlideUp 0.7s 0.9s forwards; }
+.hero-text .hero-name    { opacity: 0; animation: fadeSlideUp 0.7s 1.0s forwards; }
+.hero-text .hero-title   { opacity: 0; animation: fadeSlideUp 0.7s 1.1s forwards; }
+.hero-text .hero-sub     { opacity: 0; animation: fadeSlideUp 0.7s 1.2s forwards; }
+.hero-text .hero-cta     { opacity: 0; animation: fadeSlideUp 0.7s 1.4s forwards; }
+.hero-text .hero-stats   { opacity: 0; animation: fadeSlideUp 0.7s 1.6s forwards; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   NAV ENTRANCE
+   ============================================================ */
+.nav {
+  animation: navSlideDown 0.7s 0.2s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+@keyframes navSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================================================
+   SKILL CARDS STAGGER (set by JS)
+   ============================================================ */
+.skill-card {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
+              transform 0.5s cubic-bezier(0.4,0,0.2,1),
+              border-color 0.3s;
+}
+
+.skill-card.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ============================================================
+   PROJECT CARDS STAGGER
+   ============================================================ */
+.project-card {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1),
+              transform 0.6s cubic-bezier(0.4,0,0.2,1),
+              border-color 0.3s;
+}
+
+.project-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   TILT HOVER (applied via JS)
+   ============================================================ */
+[data-tilt] {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  will-change: transform;
+}
+
+/* ============================================================
+   ABOUT CARD STAGGER
+   ============================================================ */
+.about-card {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1),
+              transform 0.6s cubic-bezier(0.4,0,0.2,1),
+              border-color 0.3s,
+              box-shadow 0.3s;
+}
+
+.about-card.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-item {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1),
+              transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.timeline-item.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   CONTACT FORM ITEMS
+   ============================================================ */
+.contact-item {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
+              transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.contact-item.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contact-form {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s 0.2s cubic-bezier(0.4,0,0.2,1),
+              transform 0.7s 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+.contact-form.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SECTION HEAD ANIMATIONS
+   ============================================================ */
+.section-tag {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
+              transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.section-title {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s 0.1s cubic-bezier(0.4,0,0.2,1),
+              transform 0.6s 0.1s cubic-bezier(0.4,0,0.2,1);
+}
+
+.section-reveal.visible .section-tag { opacity: 1; transform: translateY(0); }
+.section-reveal.visible .section-title { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   BUTTON INTERACTIONS
+   ============================================================ */
+.btn-primary:active { transform: scale(0.97) translateY(0); }
+.btn-ghost:active { transform: scale(0.97); }
+
+/* Ripple on buttons */
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.4; }
+  to   { transform: scale(4); opacity: 0; }
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  width: 40px; height: 40px;
+  margin-top: -20px; margin-left: -20px;
+  pointer-events: none;
+  animation: ripple 0.6s linear forwards;
+}
+
+/* ============================================================
+   BACKGROUND GRADIENT SHIFT (subtle)
+   ============================================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(168,85,247,0.05), transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.04), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: bgDrift 20s ease-in-out infinite alternate;
+}
+
+@keyframes bgDrift {
+  0%   { opacity: 0.8; transform: scale(1) rotate(0deg); }
+  100% { opacity: 1; transform: scale(1.05) rotate(3deg); }
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent2), var(--accent3), var(--cyan));
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ============================================================
+   REDUCED MOTION SUPPORT
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
