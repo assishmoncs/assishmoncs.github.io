@@ -1,11 +1,7 @@
-/* ============================================================
-   ASSISHMON C S — PORTFOLIO
-   Main Stylesheet
-   ============================================================ */
 
-/* --- CSS Variables --- */
+
 :root {
-  /* Dark theme (default) */
+  
   --bg: #080810;
   --bg2: #0d0d1a;
   --bg3: #111128;
@@ -23,9 +19,9 @@
   --accent-glow-sm: rgba(168,85,247,0.15);
   --cyan: #06b6d4;
   --cyan-glow: rgba(6,182,212,0.2);
-  --font-display: 'Syne', sans-serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-body: 'Outfit', sans-serif;
+  --font-display: 'Unbounded', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Manrope', sans-serif;
   --radius: 16px;
   --radius-sm: 10px;
   --shadow: 0 8px 32px rgba(0,0,0,0.5);
@@ -51,7 +47,6 @@
   --shadow-card: 0 4px 24px rgba(0,0,0,0.10);
 }
 
-/* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -66,59 +61,19 @@ body {
   font-size: 16px;
   line-height: 1.65;
   overflow-x: hidden;
-  cursor: none;
-  transition: background var(--transition), color var(--transition);
-}
-
-@media (max-width: 768px) {
-  body { cursor: auto; }
+    transition: background var(--transition), color var(--transition);
 }
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-/* --- Scrollbar --- */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 99px; }
 
-/* --- Selection --- */
 ::selection { background: var(--accent2); color: #fff; }
 
-/* ============================================================
-   CUSTOM CURSOR
-   ============================================================ */
-.cursor-dot {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-  mix-blend-mode: screen;
-}
-
-.cursor-ring {
-  position: fixed;
-  width: 36px; height: 36px;
-  border: 1.5px solid var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: transform 0.12s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s;
-  opacity: 0.6;
-}
-
-body.cursor-hover .cursor-dot { width: 12px; height: 12px; background: var(--accent3); }
-body.cursor-hover .cursor-ring { width: 56px; height: 56px; opacity: 0.3; }
-
-/* ============================================================
-   PARTICLE CANVAS
-   ============================================================ */
 #particleCanvas {
   position: fixed;
   inset: 0;
@@ -127,9 +82,6 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; opacity: 0.3; }
   opacity: 0.55;
 }
 
-/* ============================================================
-   NAVIGATION
-   ============================================================ */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -256,7 +208,6 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; opacity: 0.3; }
 .nav-burger.open span:nth-child(2) { opacity: 0; }
 .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile Nav */
 .mobile-nav {
   position: fixed;
   inset: 0;
@@ -289,9 +240,6 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; opacity: 0.3; }
 
 .mob-link:hover { color: var(--accent3); letter-spacing: 0.05em; }
 
-/* ============================================================
-   LAYOUT
-   ============================================================ */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -302,9 +250,6 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; opacity: 0.3; }
 
 section { position: relative; }
 
-/* ============================================================
-   SECTION HEADERS
-   ============================================================ */
 .section-head {
   margin-bottom: 60px;
 }
@@ -327,9 +272,6 @@ section { position: relative; }
   line-height: 1.1;
 }
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -378,9 +320,6 @@ section { position: relative; }
 
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent3); background: var(--accent-glow-sm); }
 
-/* ============================================================
-   HERO
-   ============================================================ */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -401,7 +340,6 @@ section { position: relative; }
   align-items: center;
 }
 
-/* Profile Reveal */
 .profile-reveal-wrap {
   display: flex;
   align-items: center;
@@ -473,7 +411,6 @@ section { position: relative; }
   100% { top: 95%; opacity: 0.3; }
 }
 
-/* Hero Text */
 .hero-text {
   opacity: 0;
   transform: translateX(30px);
@@ -566,7 +503,6 @@ section { position: relative; }
   background: var(--border2);
 }
 
-/* Scroll hint */
 .scroll-hint {
   position: absolute;
   bottom: 36px;
@@ -604,9 +540,6 @@ section { position: relative; }
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
-/* ============================================================
-   ABOUT
-   ============================================================ */
 .about {
   padding: 120px 0;
 }
@@ -670,7 +603,6 @@ section { position: relative; }
   line-height: 1.75;
 }
 
-/* Timeline */
 .about-timeline {
   display: flex;
   flex-direction: column;
@@ -730,9 +662,6 @@ section { position: relative; }
   line-height: 1.7;
 }
 
-/* ============================================================
-   SKILLS
-   ============================================================ */
 .skills {
   padding: 120px 0;
   background: linear-gradient(180deg, transparent, var(--bg2) 50%, transparent);
@@ -838,9 +767,6 @@ section { position: relative; }
   letter-spacing: 0.1em;
 }
 
-/* ============================================================
-   PROJECTS
-   ============================================================ */
 .projects {
   padding: 120px 0;
 }
@@ -963,9 +889,6 @@ section { position: relative; }
 
 .project-card:hover .tag { background: var(--accent-glow); border-color: rgba(168,85,247,0.4); }
 
-/* ============================================================
-   CONTACT
-   ============================================================ */
 .contact {
   padding: 120px 0;
   background: linear-gradient(180deg, transparent, var(--bg2) 50%, transparent);
@@ -1027,7 +950,6 @@ section { position: relative; }
 
 .ci-value:hover { color: var(--accent3); }
 
-/* Form */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1087,9 +1009,6 @@ section { position: relative; }
 
 .form-success.show { display: block; }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
 .footer {
   padding: 32px clamp(20px, 5vw, 60px);
   border-top: 1px solid var(--border);
@@ -1131,9 +1050,6 @@ section { position: relative; }
   border-radius: 99px;
 }
 
-/* ============================================================
-   SECTION REVEAL (scroll animation base)
-   ============================================================ */
 .section-reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -1145,9 +1061,6 @@ section { position: relative; }
   transform: translateY(0);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
   .profile-reveal-wrap { order: -1; }
@@ -1168,4 +1081,83 @@ section { position: relative; }
 
 @media (max-width: 400px) {
   .skills-grid { grid-template-columns: 1fr; }
+}
+
+.ctx-cursor-glow {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+  will-change: transform;
+}
+
+.ctx-cursor-glow.active {
+  opacity: 1;
+}
+
+.ctx-cursor-glow.btn-mode {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(168,85,247,0.4), transparent 70%);
+}
+
+.ctx-cursor-glow.card-mode {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(6,182,212,0.18), transparent 70%);
+}
+
+.ctx-cursor-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent3);
+  background: rgba(8,8,16,0.75);
+  border: 1px solid var(--border2);
+  backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 99px;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.ctx-cursor-label.visible {
+  opacity: 1;
+}
+
+[data-theme="light"] .ctx-cursor-label {
+  background: rgba(240,240,248,0.85);
+  color: var(--accent2);
+}
+
+a, button, [data-tilt], input, textarea, select {
+  cursor: pointer;
+}
+
+input, textarea {
+  cursor: text;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  display: block;
+}
+
+.profile-img-wrap {
+  background: var(--bg3);
 }

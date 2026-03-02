@@ -3,23 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Assishmon C S</title>
+  <title>Assishmon C S — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Manrope:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <!-- Particle Canvas -->
   <canvas id="particleCanvas"></canvas>
 
-  <!-- Navigation -->
   <nav class="nav" id="mainNav">
     <div class="nav-logo">
       <span class="logo-text">ACS</span>
@@ -43,7 +37,7 @@
     </div>
   </nav>
 
-  <!-- Mobile Nav Overlay -->
+
   <div class="mobile-nav" id="mobileNav">
     <ul>
       <li><a href="#home" class="mob-link">Home</a></li>
@@ -54,28 +48,23 @@
     </ul>
   </div>
 
-  <!-- ===== HERO ===== -->
+
   <section class="hero" id="home">
     <div class="hero-inner">
-      <!-- Profile Reveal -->
+
       <div class="profile-reveal-wrap" id="profileReveal">
         <div class="profile-frame">
           <div class="profile-ring r1"></div>
           <div class="profile-ring r2"></div>
           <div class="profile-ring r3"></div>
           <div class="profile-img-wrap">
-            <div class="profile-placeholder">
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="38" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M15,90 Q15,65 50,65 Q85,65 85,90" fill="none" stroke="currentColor" stroke-width="2"/>
-              </svg>
-            </div>
+            <img src="assets/profile.png" alt="Assishmon C S" class="profile-photo" />
           </div>
           <div class="profile-scan"></div>
         </div>
       </div>
 
-      <!-- Hero Text -->
+
       <div class="hero-text" id="heroText">
         <div class="hero-greeting">
           <span class="greeting-line">Hello, World.</span>
@@ -105,14 +94,14 @@
       </div>
     </div>
 
-    <!-- Scroll indicator -->
+
     <div class="scroll-hint">
       <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
+
   <section class="about section-reveal" id="about">
     <div class="container">
       <div class="section-head">
@@ -170,7 +159,7 @@
     </div>
   </section>
 
-  <!-- ===== SKILLS ===== -->
+
   <section class="skills section-reveal" id="skills">
     <div class="container">
       <div class="section-head">
@@ -279,7 +268,7 @@
     </div>
   </section>
 
-  <!-- ===== PROJECTS ===== -->
+
   <section class="projects section-reveal" id="projects">
     <div class="container">
       <div class="section-head">
@@ -289,7 +278,7 @@
 
       <div class="projects-grid">
 
-        <!-- GuptX -->
+
         <article class="project-card" data-tilt>
           <div class="project-glow"></div>
           <div class="project-accent"></div>
@@ -297,7 +286,7 @@
             <div class="project-header">
               <span class="project-num">01</span>
               <div class="project-links">
-                <a href="https://github.com/assishmoncs/guptx" class="project-link" aria-label="GitHub">
+                <a href="https://github.com/assishmoncs/guptx" target="_blank" class="project-link" aria-label="GitHub">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
                   GitHub
                 </a>
@@ -314,7 +303,7 @@
           </div>
         </article>
 
-        <!-- Bulk Renamer -->
+
         <article class="project-card" data-tilt>
           <div class="project-glow"></div>
           <div class="project-accent"></div>
@@ -322,7 +311,7 @@
             <div class="project-header">
               <span class="project-num">02</span>
               <div class="project-links">
-                <a href="https://github.com/assishmoncs/bulk-file-renamer" class="project-link" aria-label="GitHub">
+                <a href="https://github.com/assishmoncs/bulk-file-renamer" target="_blank" class="project-link" aria-label="GitHub">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
                   GitHub
                 </a>
@@ -338,7 +327,7 @@
           </div>
         </article>
 
-        <!-- TiltGame -->
+
         <article class="project-card" data-tilt>
           <div class="project-glow"></div>
           <div class="project-accent"></div>
@@ -346,7 +335,7 @@
             <div class="project-header">
               <span class="project-num">03</span>
               <div class="project-links">
-                <a href="https://github.com/assishmoncs/TiltGame" class="project-link" aria-label="GitHub">
+                <a href="https://github.com/assishmoncs/TiltGame" target="_blank" class="project-link" aria-label="GitHub">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
                   GitHub
                 </a>
@@ -362,7 +351,7 @@
           </div>
         </article>
 
-        <!-- StreamHub -->
+
         <article class="project-card" data-tilt>
           <div class="project-glow"></div>
           <div class="project-accent"></div>
@@ -370,7 +359,7 @@
             <div class="project-header">
               <span class="project-num">04</span>
               <div class="project-links">
-                <a href="https://github.com/assishmoncs/streamhub" class="project-link" aria-label="GitHub">
+                <a href="https://github.com/assishmoncs/streamhub" target="_blank" class="project-link" aria-label="GitHub">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
                   GitHub
                 </a>
@@ -391,7 +380,7 @@
     </div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
+
   <section class="contact section-reveal" id="contact">
     <div class="container">
       <div class="section-head">
@@ -407,21 +396,21 @@
               <div class="contact-icon">✉️</div>
               <div>
                 <span class="ci-label">Email</span>
-                <a href="mailto:assishmoncs@example.com" class="ci-value">assishmoncs@example.com</a>
+                <a href="mailto:assishmoncs@gmail.com" class="ci-value">assishmoncs@gmail.com</a>
               </div>
             </div>
             <div class="contact-item">
               <div class="contact-icon">💼</div>
               <div>
                 <span class="ci-label">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/assishmoncs" class="ci-value">linkedin.com/in/assishmon</a>
+                <a href="https://www.linkedin.com/in/assishmoncs/" target="_blank" class="ci-value">linkedin.com/in/assishmoncs</a>
               </div>
             </div>
             <div class="contact-item">
               <div class="contact-icon">🐙</div>
               <div>
                 <span class="ci-label">GitHub</span>
-                <a href="https://github.com/assishmoncs" class="ci-value">github.com/assishmon</a>
+                <a href="https://github.com/assishmoncs" target="_blank" class="ci-value">github.com/assishmoncs</a>
               </div>
             </div>
           </div>
@@ -450,7 +439,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+
   <footer class="footer">
     <div class="footer-inner">
       <span class="footer-logo">ACS</span>
