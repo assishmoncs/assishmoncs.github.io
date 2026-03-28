@@ -11,9 +11,6 @@
   <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
-
-  <canvas id="particleCanvas"></canvas>
-
   <nav class="nav" id="mainNav">
     <div class="nav-logo">
       <span class="logo-text">ASSISH</span>
@@ -28,15 +25,14 @@
     </ul>
     <div class="nav-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <span class="theme-icon sun">☀</span>
-        <span class="theme-icon moon">◑</span>
+        <span class="theme-icon sun">&#9728;</span>
+        <span class="theme-icon moon">&#9681;</span>
       </button>
       <button class="nav-burger" id="navBurger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
-
 
   <div class="mobile-nav" id="mobileNav">
     <ul>
@@ -48,10 +44,8 @@
     </ul>
   </div>
 
-
   <section class="hero" id="home">
     <div class="hero-inner">
-
       <div class="profile-reveal-wrap" id="profileReveal">
         <div class="profile-frame">
           <div class="profile-ring r1"></div>
@@ -60,13 +54,12 @@
           <div class="profile-img-wrap">
             <img src="assets/profile.png" alt="Assishmon C S" class="profile-photo" />
           </div>
-          <div class="profile-scan"></div>
         </div>
       </div>
 
-
       <div class="hero-text" id="heroText">
         <div class="hero-greeting">
+          <span class="hero-badge">Open to internships and freelance work</span>
           <span class="greeting-line">Hello, World.</span>
         </div>
         <h1 class="hero-name">
@@ -89,18 +82,11 @@
           <div class="stat-div"></div>
           <div class="stat"><span class="stat-num">CSE</span><span class="stat-label">Student</span></div>
           <div class="stat-div"></div>
-          <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Curiosity</span></div>
+          <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Learning</span></div>
         </div>
       </div>
     </div>
-
-
-    <div class="scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
   </section>
-
 
   <section class="about section-reveal" id="about">
     <div class="container">
@@ -113,7 +99,7 @@
           <div class="about-card">
             <div class="about-card-glow"></div>
             <div class="about-card-inner">
-              <div class="about-icon">⚡</div>
+              <div class="about-icon">01</div>
               <h3>Who I Am</h3>
               <p>I'm Assishmon C S, a Computer Science Engineering student with a hunger for building things that matter. From mobile apps to web platforms, I craft experiences that are both functional and visually compelling.</p>
             </div>
@@ -121,9 +107,9 @@
           <div class="about-card">
             <div class="about-card-glow"></div>
             <div class="about-card-inner">
-              <div class="about-icon">🎯</div>
+              <div class="about-icon">02</div>
               <h3>What Drives Me</h3>
-              <p>Fueled by curiosity and a commitment to clean code. I pursue internship and freelance opportunities that challenge me to grow — solving real problems for real people.</p>
+              <p>Fueled by curiosity and a commitment to clean code. I pursue internship and freelance opportunities that challenge me to grow while solving real problems for real people.</p>
             </div>
           </div>
         </div>
@@ -142,14 +128,14 @@
               <div class="timeline-body">
                 <span class="timeline-year">Building</span>
                 <h4>Personal Projects</h4>
-                <p>GuptX, Bulk Renamer, TiltGame, StreamHub — each project a new frontier.</p>
+                <p>GuptX, Bulk Renamer, TiltGame, and StreamHub. Each one pushed me into a new technical challenge.</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-body">
                 <span class="timeline-year">Next</span>
-                <h4>Internship & Freelance</h4>
+                <h4>Internship &amp; Freelance</h4>
                 <p>Seeking opportunities to turn academic excellence into real-world impact.</p>
               </div>
             </div>
@@ -158,7 +144,6 @@
       </div>
     </div>
   </section>
-
 
   <section class="skills section-reveal" id="skills">
     <div class="container">
@@ -176,42 +161,42 @@
         <div class="skills-grid">
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">🌐</div>
+            <div class="skill-icon">HTML</div>
             <h4>HTML / CSS</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
             <span class="skill-level">Advanced</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">⚙️</div>
+            <div class="skill-icon">JS</div>
             <h4>JavaScript</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:82%"></div></div>
             <span class="skill-level">Proficient</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">⚛️</div>
+            <div class="skill-icon">R</div>
             <h4>React</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:72%"></div></div>
             <span class="skill-level">Intermediate</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">🔧</div>
+            <div class="skill-icon">N</div>
             <h4>Node.js</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:68%"></div></div>
             <span class="skill-level">Intermediate</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">🗄️</div>
+            <div class="skill-icon">DB</div>
             <h4>MongoDB</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:60%"></div></div>
             <span class="skill-level">Intermediate</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">🐍</div>
+            <div class="skill-icon">PY</div>
             <h4>Python</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
             <span class="skill-level">Proficient</span>
@@ -223,42 +208,42 @@
         <div class="skills-grid">
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">📱</div>
+            <div class="skill-icon">FL</div>
             <h4>Flutter</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:78%"></div></div>
             <span class="skill-level">Proficient</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">🎯</div>
+            <div class="skill-icon">DA</div>
             <h4>Dart</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
             <span class="skill-level">Proficient</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">🤖</div>
+            <div class="skill-icon">AJ</div>
             <h4>Android (Java)</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:60%"></div></div>
             <span class="skill-level">Intermediate</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">🔥</div>
+            <div class="skill-icon">FB</div>
             <h4>Firebase</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:70%"></div></div>
             <span class="skill-level">Proficient</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">🔗</div>
+            <div class="skill-icon">API</div>
             <h4>REST APIs</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:72%"></div></div>
             <span class="skill-level">Proficient</span>
           </div>
           <div class="skill-card" data-tilt>
             <div class="skill-card-glow"></div>
-            <div class="skill-icon">🎨</div>
+            <div class="skill-icon">UX</div>
             <h4>UI/UX Design</h4>
             <div class="skill-bar"><div class="skill-fill" style="--w:65%"></div></div>
             <span class="skill-level">Intermediate</span>
@@ -268,7 +253,6 @@
     </div>
   </section>
 
-
   <section class="projects section-reveal" id="projects">
     <div class="container">
       <div class="section-head">
@@ -277,8 +261,6 @@
       </div>
 
       <div class="projects-grid">
-
-
         <article class="project-card" data-tilt>
           <div class="project-glow"></div>
           <div class="project-accent"></div>
@@ -303,7 +285,6 @@
           </div>
         </article>
 
-
         <article class="project-card" data-tilt>
           <div class="project-glow"></div>
           <div class="project-accent"></div>
@@ -318,7 +299,7 @@
               </div>
             </div>
             <h3 class="project-title">Bulk Renamer</h3>
-            <p class="project-desc">A powerful desktop utility for batch-renaming files with advanced pattern matching, regex support, and live preview — saving hours of manual work.</p>
+            <p class="project-desc">A powerful desktop utility for batch-renaming files with advanced pattern matching, regex support, and live preview, saving hours of manual work.</p>
             <div class="project-tags">
               <span class="tag">Python</span>
               <span class="tag">Tkinter</span>
@@ -326,7 +307,6 @@
             </div>
           </div>
         </article>
-
 
         <article class="project-card" data-tilt>
           <div class="project-glow"></div>
@@ -351,7 +331,6 @@
           </div>
         </article>
 
-
         <article class="project-card" data-tilt>
           <div class="project-glow"></div>
           <div class="project-accent"></div>
@@ -375,11 +354,9 @@
             </div>
           </div>
         </article>
-
       </div>
     </div>
   </section>
-
 
   <section class="contact section-reveal" id="contact">
     <div class="container">
@@ -390,24 +367,24 @@
 
       <div class="contact-grid">
         <div class="contact-left">
-          <p class="contact-intro">Whether it's an internship, a freelance project, or just a hello — my inbox is always open.</p>
+          <p class="contact-intro">Whether it's an internship, a freelance project, or just a hello, my inbox is always open.</p>
           <div class="contact-items">
             <div class="contact-item">
-              <div class="contact-icon">✉️</div>
+              <div class="contact-icon">01</div>
               <div>
                 <span class="ci-label">Email</span>
                 <a href="mailto:assishmoncs@gmail.com" class="ci-value">assishmoncs@gmail.com</a>
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-icon">💼</div>
+              <div class="contact-icon">02</div>
               <div>
                 <span class="ci-label">LinkedIn</span>
                 <a href="https://www.linkedin.com/in/assishmoncs/" target="_blank" class="ci-value">linkedin.com/in/assishmoncs</a>
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-icon">🐙</div>
+              <div class="contact-icon">03</div>
               <div>
                 <span class="ci-label">GitHub</span>
                 <a href="https://github.com/assishmoncs" target="_blank" class="ci-value">github.com/assishmoncs</a>
@@ -434,21 +411,19 @@
             <span>Send Message</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
           </button>
-          <p class="form-success" id="formSuccess">Message sent! I'll get back to you soon. ✨</p>
+          <p class="form-success" id="formSuccess">Message sent! I'll get back to you soon.</p>
         </form>
       </div>
     </div>
   </section>
 
-
   <footer class="footer">
     <div class="footer-inner">
       <span class="footer-logo">ASSISH</span>
-      <p class="footer-copy">© 2025 Assishmon C S. Crafted with curiosity.</p>
+      <p class="footer-copy">&copy; 2025 Assishmon C S. Crafted with curiosity.</p>
     </div>
   </footer>
 
-  <script src="js/particles.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

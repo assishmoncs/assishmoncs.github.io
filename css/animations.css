@@ -182,16 +182,12 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse at 20% 50%, rgba(168,85,247,0.05), transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.04), transparent 50%);
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(255, 122, 89, 0.06), transparent 55%),
+    radial-gradient(ellipse at 85% 15%, rgba(85, 214, 255, 0.05), transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(255, 255, 255, 0.03), transparent 60%);
   pointer-events: none;
   z-index: 0;
-  animation: bgDrift 20s ease-in-out infinite alternate;
-}
-
-@keyframes bgDrift {
-  0%   { opacity: 0.8; transform: scale(1) rotate(0deg); }
-  100% { opacity: 1; transform: scale(1.05) rotate(3deg); }
 }
 
 .scroll-progress {
