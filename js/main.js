@@ -251,18 +251,51 @@
     const success = document.getElementById('formSuccess');
     if (!form) return;
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       const btn = form.querySelector('.btn-submit');
+      const endpoint = form.getAttribute('action');
+      if (!btn || !endpoint || endpoint.includes('YOUR_FORM_ID')) {
+        if (success) {
+          success.textContent = 'Form setup pending: replace YOUR_FORM_ID with your Formspree form ID.';
+          success.classList.add('show', 'error');
+        }
+        return;
+      }
+
       btn.disabled = true;
       btn.querySelector('span').textContent = 'Sending...';
-      setTimeout(() => {
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
+
         form.reset();
+        if (success) {
+          success.textContent = "Message sent! I'll get back to you soon.";
+          success.classList.remove('error');
+          success.classList.add('show');
+          setTimeout(() => success && success.classList.remove('show'), 5000);
+        }
+      } catch (err) {
+        if (success) {
+          success.textContent = 'Could not send message right now. Please try again or email me directly.';
+          success.classList.add('show', 'error');
+        }
+      } finally {
         btn.disabled = false;
         btn.querySelector('span').textContent = 'Send Message';
-        if (success) success.classList.add('show');
-        setTimeout(() => success && success.classList.remove('show'), 5000);
-      }, 1200);
+      }
     });
   }
 

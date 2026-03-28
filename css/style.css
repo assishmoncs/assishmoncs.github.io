@@ -1047,6 +1047,12 @@ section { position: relative; }
 
 .form-success.show { display: block; }
 
+.form-success.error {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
 .footer {
   padding: 40px clamp(20px, 5vw, 60px);
   border-top: 1px solid var(--border);
