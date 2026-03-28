@@ -1,5 +1,9 @@
 
 
+.profile-reveal-wrap.animate-in {
+  animation: profileRevealIn 1s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+
 @keyframes profileRevealIn {
   0% {
     opacity: 0;
@@ -8,7 +12,7 @@
   }
   60% {
     opacity: 1;
-    transform: scale(1.05) translateY(-4px);
+    transform: scale(1.06) translateY(-6px);
     filter: blur(0);
   }
   100% {
@@ -16,10 +20,6 @@
     transform: scale(1) translateY(0);
     filter: blur(0);
   }
-}
-
-.profile-reveal-wrap.animate-in {
-  animation: profileRevealIn 1s cubic-bezier(0.34,1.56,0.64,1) forwards;
 }
 
 @keyframes heroTextIn {
@@ -62,10 +62,11 @@
 
 .skill-card {
   opacity: 0;
-  transform: translateY(24px) scale(0.97);
-  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
-              transform 0.5s cubic-bezier(0.4,0,0.2,1),
-              border-color 0.3s;
+  transform: translateY(28px) scale(0.95);
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1),
+              transform 0.6s cubic-bezier(0.4,0,0.2,1),
+              border-color 0.3s,
+              box-shadow 0.3s;
 }
 
 .skill-card.in-view {
@@ -75,15 +76,16 @@
 
 .project-card {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1),
-              transform 0.6s cubic-bezier(0.4,0,0.2,1),
-              border-color 0.3s;
+  transform: translateY(36px) scale(0.95);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1),
+              transform 0.7s cubic-bezier(0.4,0,0.2,1),
+              border-color 0.3s,
+              box-shadow 0.3s;
 }
 
 .project-card.in-view {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 [data-tilt] {
@@ -162,18 +164,18 @@
 .btn-ghost:active { transform: scale(0.97); }
 
 @keyframes ripple {
-  from { transform: scale(0); opacity: 0.4; }
-  to   { transform: scale(4); opacity: 0; }
+  from { transform: scale(0); opacity: 0.5; }
+  to   { transform: scale(4.5); opacity: 0; }
 }
 
 .ripple-effect {
   position: absolute;
   border-radius: 50%;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.5);
   width: 40px; height: 40px;
   margin-top: -20px; margin-left: -20px;
   pointer-events: none;
-  animation: ripple 0.6s linear forwards;
+  animation: ripple 0.7s ease-out forwards;
 }
 
 body::before {
