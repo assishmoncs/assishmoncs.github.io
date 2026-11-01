@@ -1,79 +1,70 @@
 # Assishmon C S — Developer Portfolio
 
-[![Live Site](https://img.shields.io/badge/Live_Site-assishmoncs.tech-7c3aed?style=for-the-badge&logo=googlechrome&logoColor=white)](https://assishmoncs.tech)
-[![GitHub Profile](https://img.shields.io/badge/GitHub-assishmoncs-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/assishmoncs)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-assishmoncs-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/assishmoncs/)
+A static portfolio for full-stack applications, distributed systems, AI tools, and native experiences. Built with HTML, CSS, and dependency-free JavaScript.
 
-A clean, modern, and responsive developer portfolio website designed to showcase my technical skills, featured engineering projects, and contact information. Built with pure vanilla web technologies focusing on sleek glassmorphism aesthetics, fluid motion, and high performance.
+Domain: [assishmoncs.tech](https://assishmoncs.tech)
 
----
+## Experience
 
-## 🌐 Live Preview
+- A perspective-rendered 3D hero: a lit icosahedron with orbiting nodes, pointer response, pause control, and a CSS fallback. It stops animating off-screen, in background tabs, and when reduced motion is requested. Pixel density and frame rate are capped for mobile devices.
+- Nine projects, with PairPad, ShadowCast, and RuralShield AI featured first. Category filters and technology buttons connect skills to concrete work.
+- Project notes open in keyboard-accessible dialogs; native expandable details work without JavaScript.
+- Dark and light themes, saved when browser storage is available.
+- Responsive navigation, active-section indication, reading progress, a skip link, and visible focus states.
+- Resume download, social links, copy-email feedback, and the existing Formspree contact endpoint. Failed submissions preserve the draft; requests time out after 15 seconds.
+- Static content and metadata remain readable without JavaScript. Project illustrations are conceptual diagrams, not application screenshots.
 
-Visit the live website at: **[assishmoncs.tech](https://assishmoncs.tech)**
+## Preview
 
----
+No installation or build is required. Open `index.html`, or use Node.js for the local server:
 
-## ✨ Features
+```sh
+node scripts/serve.mjs
+```
 
-- **⚡ Fast & Lightweight**: Zero external frameworks or heavy runtimes — built entirely with semantic HTML5, modern CSS3, and vanilla JavaScript.
-- **🎨 Dark & Light Mode**: Theme switcher with persistent theme preference saved to `localStorage`.
-- **🪐 Cursor-Reactive Background & Particles**: Interactive background featuring dynamic canvas particles and smooth lerped parallax orbs that respond to cursor movement.
-- **🎴 3D Tilt Cards**: Interactive 3D perspective tilt effect on project and skill cards.
-- **📱 Fully Responsive**: Fluid typography and adaptive grid/flexbox layouts tailored for mobile, tablet, and desktop screens.
-- **🌊 Scroll Animations**: Staggered scroll-triggered entrance reveals powered by `IntersectionObserver`.
-- **🛠️ Interactive Skills Filter**: Tabbed interface to explore Web Development and Mobile/Software Engineering toolsets with animated progress bars.
-- **📬 Working Contact Form**: Integrated with Formspree for direct email dispatch alongside quick social links.
+Visit [the local preview](http://127.0.0.1:8000). The server binds only to loopback. Stop it with Ctrl+C. The site can be hosted by any static host; the existing `CNAME` is retained.
 
----
+## Edit project content
 
-## 🛠️ Built With
+Project descriptions and technology mappings live in `data/projects.json`. After changing them, regenerate the static cards:
 
-- **HTML5** — Semantic, accessible document markup.
-- **CSS3** — Custom Properties (CSS variables), CSS Grid, Flexbox, Glassmorphism styling, and keyframe animations.
-- **Vanilla JavaScript (ES6+)** — Smooth scrolling, scroll-progress tracking, DOM manipulation, 3D tilt effects, and particle simulation.
-- **Google Fonts** — *Unbounded*, *Manrope*, and *Share Tech Mono*.
+```sh
+node scripts/render-projects.mjs
+node scripts/check.mjs
+```
 
----
+Commit both the data and the updated `index.html`. This optional authoring helper runs locally; the website never fetches the JSON at runtime. Other sections are edited directly in `index.html`.
 
-## 📁 Repository Structure
+## Files
 
 ```text
-portfolio/
-├── assets/
-│   ├── favicon.ico          # Browser tab favicon
-│   ├── profile.png          # Hero section profile photo
-│   └── resume.pdf           # Downloadable resume
-├── css/
-│   ├── animations.css       # Keyframes, transitions, and orb styles
-│   └── style.css            # Base styles, layout, themes, and components
-├── js/
-│   ├── main.js              # Core UI interactions, tabs, tilt, and scroll tracking
-│   └── particles.js         # Particle canvas physics and mouse interaction
-├── CNAME                    # Custom domain configuration (assishmoncs.tech)
-├── index.html               # Main single-page application markup
-└── README.md                # Project documentation
+index.html                 Static page, metadata, and generated project cards
+css/style.css              Themes, layouts, and responsive/motion rules
+js/theme.js                Early saved-theme application
+js/main.js                 Navigation, filtering, dialogs, contact, and feedback
+js/scene.js                Dependency-free 3D canvas renderer
+data/projects.json         Project content supplied by the portfolio owner
+scripts/render-projects.mjs Optional static-card generator
+scripts/serve.mjs          Loopback preview server
+scripts/check.mjs          Content, reference, and asset checks
+assets/                   Existing portrait, favicon, and resume
+CNAME                     Existing custom-domain configuration
 ```
----
 
-## 💻 Local Development
+## Local verification
 
-Since this portfolio is built with vanilla web technologies, running it locally requires no build step or package installation.
+Run `node scripts/check.mjs` and `node --check` on the JavaScript files. Browser checks should cover 320px, 390px, tablet, and desktop widths; both themes; filters and empty results; dialogs and Escape focus return; mobile navigation; and keyboard-only access.
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/assishmoncs/portfolio.git
-   cd portfolio
-   ```
+For isolated failure scenarios, start the server with `node scripts/serve.mjs --test-fixtures`. These query modes are available only with that flag:
 
-2. **Open in browser**:
-   - Double-click `index.html` directly in your file manager, or
-   - Use a lightweight local server (e.g. VS Code Live Server, or `python -m http.server 8000` / `npx serve .`).
+- `?test=form-success`, `?test=form-error`, `?test=form-offline`: mocked fetch responses; no external message is sent.
+- `?test=no-js`: strips scripts from the served document.
+- `?test=no-canvas`: simulates an unavailable canvas context.
+- `?test=reduced-motion`: simulates the JavaScript media-query preference. Also check the real OS/browser preference to verify CSS behavior.
+- `?test=no-storage`: simulates unavailable local storage.
 
----
+All fixture forms target a local non-delivering route, including the no-JavaScript fixture. The original HTML is never changed by fixtures. Test fixtures are not enabled by normal preview or static hosting.
 
-## 📬 Contact & Connect
+## External services
 
-- **Email**: [assishmoncs@gmail.com](mailto:assishmoncs@gmail.com)
-- **LinkedIn**: [linkedin.com/in/assishmoncs](https://www.linkedin.com/in/assishmoncs/)
-- **GitHub**: [github.com/assishmoncs](https://github.com/assishmoncs)
+Google Fonts supplies Manrope and Share Tech Mono, with system-font fallbacks. The contact form uses the existing Formspree endpoint; actual inbox delivery depends on that account and was not tested by sending a real message. Project details are based on owner-supplied information; no impact metrics, live demos, or fabricated screenshots are included.
