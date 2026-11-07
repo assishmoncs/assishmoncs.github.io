@@ -394,40 +394,10 @@ em {
   inset:0;
   transition:opacity .5s
 }
-.fallback-core {
-  position:absolute;
-  inset:34%;
-  background:linear-gradient(135deg,#c5afff,#6245a5 55%,#25213b);
-  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
-  transform:rotate(-15deg)
-}
-.fallback-orbit {
-  position:absolute;
-  inset:18% 8%;
-  border:1px solid #a595d855;
-  border-radius:50%;
-  transform:rotate(-27deg) scaleY(.6)
-}
-.scene-fallback i {
-  position:absolute;
-  top:30%;
-  left:20%;
-  width:13px;
-  height:13px;
-  background:#a68de1;
-  border-radius:50%
-}
-.scene-fallback i:nth-of-type(2) {
-  top:65%;
-  left:78%;
-  width:20px;
-  height:20px
-}
-.scene-fallback i:nth-of-type(3) {
-  top:73%;
-  left:30%;
-  width:7px;
-  height:7px
+.scene-fallback svg {
+  width:100%;
+  height:100%;
+  color:var(--accent)
 }
 .hero-foot {
   position:absolute;
@@ -1586,3 +1556,41 @@ dialog .button {
     transform:none
   }
 }
+/* Header navigation magnification */
+@media (min-width:521px) {
+  .nav-links a { display:inline-block; transform-origin:center; transition:transform .2s ease,color .2s ease }
+  .nav-links a:hover,.nav-links a:focus-visible { color:var(--text); transform:scale(1.22) }
+}
+/* Vertical project stack */
+.project-grid { display:block; margin:0; padding:0; overflow:visible }
+.project-grid .project-card { position:sticky; top:calc(92px + var(--stack-offset, 0px)); margin:0 0 36px; min-height:300px; --card-glow:rgba(182,162,255,.3); border-color:var(--card-glow); box-shadow:0 -4px 25px var(--card-glow),0 18px 40px #0003 }
+.project-grid .project-card:nth-child(3n+2) { --card-glow:rgba(117,197,236,.3) }
+.project-grid .project-card:nth-child(3n) { --card-glow:rgba(126,212,172,.3) }
+.project-grid .project-card:nth-child(1) { --stack-offset:0px; z-index:1 }
+.project-grid .project-card:nth-child(2) { --stack-offset:7px; z-index:2 }
+.project-grid .project-card:nth-child(3) { --stack-offset:14px; z-index:3 }
+.project-grid .project-card:nth-child(4) { --stack-offset:21px; z-index:4 }
+.project-grid .project-card:nth-child(5) { --stack-offset:28px; z-index:5 }
+.project-grid .project-card:nth-child(6) { --stack-offset:35px; z-index:6 }
+.project-grid .project-card:nth-child(7) { --stack-offset:42px; z-index:7 }
+.project-grid .project-card:nth-child(8) { --stack-offset:49px; z-index:8 }
+.project-grid .project-card:nth-child(9) { --stack-offset:56px; z-index:9 }
+.project-grid .project-card:focus-within { z-index:10 }
+.project-grid .project-card:hover,.project-grid .project-card:focus-within { border-color:var(--accent); box-shadow:0 0 30px var(--card-glow),0 18px 40px #0003; transform:none }
+.project-grid .project-card.featured { display:grid; grid-template-columns:1fr 1fr }
+.project-grid .project-card.featured .project-art { height:100%; min-height:300px; border-bottom:0; border-right:1px solid var(--line) }
+.project-grid .project-body { min-height:300px; justify-content:center }
+@media(max-width:700px) {
+  .project-grid .project-card { top:calc(76px + var(--stack-offset, 0px)); margin-bottom:24px; min-height:0 }
+  .project-grid .project-card.featured { display:flex; flex-direction:column }
+  .project-grid .project-card.featured .project-art { height:165px; min-height:0; border-right:0; border-bottom:1px solid var(--line) }
+  .project-grid .project-body { min-height:260px }
+}
+@media(max-height:650px),(prefers-reduced-motion:reduce) { .project-grid .project-card { position:relative; top:auto } }
+@media(prefers-reduced-motion:reduce) { .nav-links a:hover,.nav-links a:focus-visible { transform:none } }
+/* The landing recedes as the next chapter arrives; keyboard focus stays visible. */
+.hero-copy,.hero-art,.hero-foot,.hero .motion-toggle { opacity:var(--hero-opacity,1) }
+.hero:focus-within { --hero-opacity:1 !important }
+@media(prefers-reduced-motion:reduce) { .hero-copy,.hero-art,.hero-foot,.hero .motion-toggle { opacity:1 } }
+/* Without script, expandable project details remain in normal flow. */
+html:not(.js) .project-grid .project-card { position:relative; top:auto }

@@ -6,9 +6,10 @@ Domain: [assishmoncs.tech](https://assishmoncs.tech)
 
 ## Experience
 
-- A perspective-rendered 3D hero: a lit icosahedron with orbiting nodes, pointer response, pause control, and a CSS fallback. It stops animating off-screen, in background tabs, and when reduced motion is requested. Pixel density and frame rate are capped for mobile devices.
-- Nine projects, with PairPad, ShadowCast, and RuralShield AI featured first. Category filters and technology buttons connect skills to concrete work.
+- An animated ribbon hero with scroll and pointer response, a pause control, and a static SVG fallback. It stops animating off-screen, in background tabs, and when reduced motion is requested. Pixel density and frame rate are capped for mobile devices.
+- A vertical stack of nine projects, with PairPad, ShadowCast, and RuralShield AI featured first. Category filters and technology buttons connect skills to concrete work.
 - Project notes open in keyboard-accessible dialogs; native expandable details work without JavaScript.
+- A landing fade and section-by-section scroll journey, with a GSAP ScrollTrigger entrance for the project stack and reduced-motion support.
 - Dark and light themes, saved when browser storage is available.
 - Responsive navigation, active-section indication, reading progress, a skip link, and visible focus states.
 - Resume download, social links, copy-email feedback, and the existing Formspree contact endpoint. Failed submissions preserve the draft; requests time out after 15 seconds.
@@ -42,7 +43,8 @@ index.html                 Static page, metadata, and generated project cards
 css/style.css              Themes, layouts, and responsive/motion rules
 js/theme.js                Early saved-theme application
 js/main.js                 Navigation, filtering, dialogs, contact, and feedback
-js/scene.js                Dependency-free 3D canvas renderer
+js/scene.js                Dependency-free ribbon canvas renderer
+js/journey.js              Landing fade and GSAP scroll transitions
 data/projects.json         Project content supplied by the portfolio owner
 scripts/render-projects.mjs Optional static-card generator
 scripts/serve.mjs          Loopback preview server
@@ -67,4 +69,4 @@ All fixture forms target a local non-delivering route, including the no-JavaScri
 
 ## External services
 
-Google Fonts supplies Manrope and Share Tech Mono, with system-font fallbacks. The contact form uses the existing Formspree endpoint; actual inbox delivery depends on that account and was not tested by sending a real message. Project details are based on owner-supplied information; no impact metrics, live demos, or fabricated screenshots are included.
+Google Fonts supplies Manrope and Share Tech Mono, with system-font fallbacks. GSAP and ScrollTrigger load from cdnjs; the content remains accessible if they are unavailable. The contact form uses the existing Formspree endpoint; actual inbox delivery depends on that account and was not tested by sending a real message. Project details are based on owner-supplied information; no impact metrics, live demos, or fabricated screenshots are included.

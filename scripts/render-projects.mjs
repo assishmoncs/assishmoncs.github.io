@@ -20,11 +20,8 @@ const card = (p, i) => `
           </div>
         </article>`;
 const content = `
-      <h3 class="collection-label" id="featured-label">IN THE SPOTLIGHT <span>01—03</span></h3>
-      <div class="featured-grid project-grid" aria-labelledby="featured-label">${projects.slice(0,3).map(card).join('')}
-      </div>
-      <h3 class="collection-label more-label" id="more-label">MORE EXPLORATIONS <span>04—09</span></h3>
-      <div class="more-grid project-grid" aria-labelledby="more-label">${projects.slice(3).map((p,i) => card(p,i+3)).join('')}
+      <h3 class="collection-label" id="gallery-label">SELECTED PROJECTS <span>01—09</span></h3>
+      <div class="project-grid" id="project-gallery" aria-labelledby="gallery-label">${projects.map(card).join('')}
       </div>
       `;
 const index = new URL('index.html', root);

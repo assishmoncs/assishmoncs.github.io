@@ -117,6 +117,7 @@
     $('.skill-selection').hidden = !technology;
     $('#skill-filter-label').textContent = `Built with ${technology}`;
     $('.no-results').hidden = count > 0;
+    document.dispatchEvent(new Event('projectfilterchange'));
   }
   $$('[data-filter]').forEach(button => button.addEventListener('click', () => {
     category = button.dataset.filter;
