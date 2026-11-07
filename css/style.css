@@ -151,13 +151,18 @@ em {
   gap:40px
 }
 .wordmark {
-  font-size:40px;
-  letter-spacing:-.1em;
+  display:inline-flex;
+  align-items:baseline;
+  gap:.12em;
+  font-size:22px;
+  letter-spacing:.04em;
   line-height:1;
   font-weight:800
 }
 .wordmark span {
-  color:var(--accent)
+  color:var(--accent);
+  font-family:var(--mono);
+  font-weight:400
 }
 .nav-links {
   display:flex;
@@ -809,7 +814,19 @@ em {
   background:var(--raised);
   border:1px solid var(--line);
   border-radius:8px;
-  overflow:hidden
+  overflow:hidden;
+  isolation:isolate;
+  box-shadow:0 20px 60px rgba(0,0,0,.14);
+  animation:portrait-float 6s ease-in-out infinite
+}
+.portrait-wrap::after {
+  content:"";
+  position:absolute;
+  inset:12px 12px 50px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:3px;
+  pointer-events:none;
+  z-index:1
 }
 .portrait-wrap img {
   display:block;
@@ -818,7 +835,16 @@ em {
   aspect-ratio:1/1.1;
   object-fit:cover;
   object-position:center;
-  filter:saturate(.6)
+  filter:saturate(.7);
+  transition:transform .8s ease,filter .8s ease
+}
+.portrait-wrap:hover img {
+  transform:scale(1.045);
+  filter:saturate(1)
+}
+@keyframes portrait-float {
+  0%,100% { transform:translateY(0) }
+  50% { transform:translateY(-8px) }
 }
 .portrait-caption {
   display:flex;
@@ -988,9 +1014,6 @@ footer {
   gap:25px;
   align-items:center;
   padding-block:28px
-}
-footer .wordmark {
-  font-size:32px
 }
 footer p {
   color:var(--muted);
@@ -1313,9 +1336,6 @@ dialog .button {
     min-height:66px;
     padding-block:14px;
     gap:10px
-  }
-  .wordmark {
-    font-size:34px
   }
   .nav-links {
     gap:15px
