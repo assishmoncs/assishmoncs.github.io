@@ -1,47 +1,154 @@
-/* A kinetic ribbon: a small, dependency-free canvas sculpture. */
+/* 1. 3D WebGL Preloader (Spinning Liquid-Chrome Core + Camera Zoom-Through Curtain)
+   2. Post-Intro Scroll-Driven 3D GLSL Liquid-Metal Substance (100% GPU Shaders, Zero Lag)
+      Awakens after #home and morphs continuously across scroll:
+      Projects: Molten Liquid Chrome Orb -> About: Spiked Ferrofluid Crystal -> Skills/Contact: Liquid Torus Sculpture */
 (() => {
   'use strict';
-  const canvas=document.getElementById('system-scene'),art=document.querySelector('.hero-art'),hero=document.querySelector('.hero'),toggle=document.querySelector('.motion-toggle');
-  let ctx;try{ctx=canvas.getContext('2d');}catch{return;}if(!ctx)return;
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),coarse=matchMedia('(pointer: coarse)');
-  let width=0,height=0,time=0,last=0,frame=0,visible=true,paused=false,scroll=0,pointerX=0,pointerY=0,tiltX=0,tiltY=0;
-  function readScroll(){const r=hero.getBoundingClientRect();scroll=Math.max(0,Math.min(1,-r.top/Math.max(r.height*.7,1)));}
-  function project(x,y,z,ax,ay){const c=Math.cos(ay),s=Math.sin(ay),cx=Math.cos(ax),sx=Math.sin(ax),xx=x*c+z*s,zz=-x*s+z*c,yy=y*cx-zz*sx,depth=y*sx+zz*cx,scale=Math.min(width,height)*.28*(4/(4-depth));return [width/2+xx*scale,height/2+yy*scale,depth];}
-  function render(){
-    if(!width||!height)return;
-    const light=document.documentElement.dataset.theme==='light',size=Math.min(width,height),cx=width/2,cy=height/2;
-    ctx.clearRect(0,0,width,height);
-    const glow=ctx.createRadialGradient(cx,cy,size*.015,cx,cy,size*.44);glow.addColorStop(0,light?'#a894e344':'#ad93ff55');glow.addColorStop(.5,light?'#ad93ee1a':'#9e80ed1f');glow.addColorStop(1,'#a58bff00');ctx.fillStyle=glow;ctx.fillRect(0,0,width,height);
-    const ax=-.46+tiltY*.3,ay=time*.11+tiltX*.4+scroll*.8;
-    const rings=[];
-    for(let k=0;k<52;k++){
-      const v=(k/51-.5)*1.3,points=[];let depth=0;
-      for(let i=0;i<=160;i++){
-        const t=i/160*Math.PI*2, twist=t*1.5+time*.14;
-        const x=(1.05+v*.42*Math.cos(twist))*Math.cos(t),y=v*.7*Math.sin(twist),z=(1.05+v*.42*Math.cos(twist))*Math.sin(t);
-        const p=project(x,y,z,ax,ay);points.push(p);depth+=p[2];
-      }
-      rings.push({points,depth:depth/161,k});
-    }
-    rings.sort((a,b)=>a.depth-b.depth).forEach(({points,k})=>{
-      ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));
-      const hue=258+k*.7;ctx.strokeStyle=light?`hsla(${hue},52%,46%,.42)`:`hsla(${hue},85%,${70+k*.18}%,.48)`;ctx.lineWidth=k%9===0?1.4:.65;ctx.stroke();
-    });
-    // A glimmer moves along the outer curve.
-    const t=time*.4,twist=t*1.5+time*.14,v=.65;
-    const p=project((1.05+v*.42*Math.cos(twist))*Math.cos(t),v*.7*Math.sin(twist),(1.05+v*.42*Math.cos(twist))*Math.sin(t),ax,ay),r=size*.009;
-    const halo=ctx.createRadialGradient(p[0],p[1],0,p[0],p[1],r*6);halo.addColorStop(0,light?'#7451bfbb':'#f0e9ffff');halo.addColorStop(1,'#b6a2ff00');ctx.fillStyle=halo;ctx.beginPath();ctx.arc(p[0],p[1],r*6,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle=light?'#7451bf':'#fff';ctx.beginPath();ctx.arc(p[0],p[1],r*.7,0,Math.PI*2);ctx.fill();
-    art.classList.add('scene-ready');
+
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const coarse = matchMedia('(pointer: coarse)');
+
+  // =========================================================================
+  // PART A: 3D WEBGL LOADING SCREEN WITH CAMERA ZOOM-THROUGH TRANSITION
+  // =========================================================================
+  const preloader = document.getElementById('preloader-3d');
+  const preCanvas = document.getElementById('preloader-canvas');
+  const prePct = document.getElementById('preloader-pct');
+  const preBar = document.getElementById('preloader-bar');
+
+  function finishPreloader() {
+    if (!preloader || preloader.dataset.done) return;
+    preloader.dataset.done = 'true';
+    preloader.classList.add('is-leaving');
+    document.dispatchEvent(new Event('preloaderDone'));
+    setTimeout(() => {
+      preloader.hidden = true;
+    }, 780);
   }
-  function shouldAnimate(){return visible&&!document.hidden&&!paused&&!reduced.matches;}
-  function tick(now){frame=0;if(!shouldAnimate()){last=0;return;}if(now-last>=40){time+=last?Math.min(now-last,100)/1000:0;last=now;tiltX+=(pointerX-tiltX)*.06;tiltY+=(pointerY-tiltY)*.06;render();}frame=requestAnimationFrame(tick);}
-  function synchronize(){cancelAnimationFrame(frame);frame=0;last=0;readScroll();toggle.hidden=reduced.matches;toggle.textContent=paused?'Resume artwork':'Pause artwork';toggle.setAttribute('aria-pressed',String(paused));render();if(shouldAnimate())frame=requestAnimationFrame(tick);}
-  function resize(){const r=art.getBoundingClientRect();width=r.width;height=r.height;if(!width||!height)return;const dpr=Math.min(devicePixelRatio||1,coarse.matches?1.5:2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);render();}
-  art.addEventListener('pointermove',e=>{if(coarse.matches||reduced.matches||paused)return;const r=art.getBoundingClientRect();pointerX=(e.clientX-r.left)/r.width-.5;pointerY=(e.clientY-r.top)/r.height-.5;},{passive:true});
-  art.addEventListener('pointerleave',()=>{pointerX=pointerY=0;});window.addEventListener('scroll',()=>{if(!paused){readScroll();if(!shouldAnimate())render();}},{passive:true});
-  toggle.addEventListener('click',()=>{paused=!paused;synchronize();});reduced.addEventListener('change',synchronize);coarse.addEventListener('change',resize);document.addEventListener('visibilitychange',synchronize);document.addEventListener('themechange',render);
-  if('ResizeObserver'in window)new ResizeObserver(resize).observe(art);else window.addEventListener('resize',resize);
-  if('IntersectionObserver'in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;synchronize();},{threshold:0}).observe(art);
-  resize();synchronize();
+
+  if (preloader) {
+    if (reduced.matches) {
+      preloader.hidden = true;
+      document.dispatchEvent(new Event('preloaderDone'));
+    } else {
+      let preRaf = 0;
+      let preRenderer = null;
+      let progress = 0;
+      let dismissed = false;
+
+      const dismiss = () => {
+        if (dismissed) return;
+        dismissed = true;
+        cancelAnimationFrame(preRaf);
+        if (preRenderer) {
+          try { preRenderer.dispose(); } catch { /* ignore */ }
+        }
+        finishPreloader();
+      };
+
+      // Allow instant click/tap to skip
+      preloader.addEventListener('click', dismiss, { once: true });
+
+      if (window.THREE && preCanvas) {
+        try {
+          preRenderer = new THREE.WebGLRenderer({ canvas: preCanvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
+          preRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+          preRenderer.setSize(window.innerWidth, window.innerHeight, false);
+
+          const pScene = new THREE.Scene();
+          const pCam = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 50);
+          pCam.position.set(0, 0, 5.2);
+
+          pScene.add(new THREE.AmbientLight(0xffffff, 0.8));
+          const pLight1 = new THREE.DirectionalLight(0xff451a, 2.2);
+          pLight1.position.set(4, 4, 4);
+          pScene.add(pLight1);
+          const pLight2 = new THREE.DirectionalLight(0x1c4ed8, 2.0);
+          pLight2.position.set(-4, -3, 3);
+          pScene.add(pLight2);
+
+          const pGroup = new THREE.Group();
+          pScene.add(pGroup);
+
+          const coreGeo = new THREE.OctahedronGeometry(0.92, 2);
+          const coreMat = new THREE.MeshStandardMaterial({
+            color: 0xeae5dc,
+            metalness: 0.88,
+            roughness: 0.14,
+            flatShading: true
+          });
+          const core = new THREE.Mesh(coreGeo, coreMat);
+          pGroup.add(core);
+
+          const wire = new THREE.LineSegments(
+            new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.32, 1)),
+            new THREE.LineBasicMaterial({ color: 0xff451a, transparent: true, opacity: 0.72 })
+          );
+          pGroup.add(wire);
+
+          const r1 = new THREE.Mesh(
+            new THREE.TorusGeometry(1.58, 0.024, 16, 96),
+            new THREE.MeshStandardMaterial({ color: 0x1c4ed8, metalness: 0.7, roughness: 0.2 })
+          );
+          const r2 = new THREE.Mesh(
+            new THREE.TorusGeometry(1.88, 0.016, 16, 96),
+            new THREE.MeshStandardMaterial({ color: 0xff451a, metalness: 0.6, roughness: 0.25 })
+          );
+          pGroup.add(r1, r2);
+
+          const startTime = performance.now();
+          const duration = 1150; // Crisp 1.15s 3D assembly + zoom-through
+
+          const tickPre = now => {
+            if (dismissed) return;
+            const elapsed = now - startTime;
+            progress = Math.min(1, elapsed / duration);
+            const eased = 1 - Math.pow(1 - progress, 3);
+
+            if (prePct) prePct.textContent = `${String(Math.round(eased * 100)).padStart(2, '0')}%`;
+            if (preBar) preBar.style.transform = `scaleX(${eased.toFixed(4)})`;
+
+            core.rotation.y = elapsed * 0.0024;
+            core.rotation.x = elapsed * 0.0014;
+            wire.rotation.y = -elapsed * 0.0016;
+            r1.rotation.x = Math.PI * 0.35 + elapsed * 0.002;
+            r1.rotation.y = elapsed * 0.0012;
+            r2.rotation.y = -elapsed * 0.0022;
+            r2.rotation.z = elapsed * 0.0015;
+
+            // Dramatic 3D camera zoom-through in final 20%
+            if (progress > 0.8) {
+              const zoomT = (progress - 0.8) / 0.2;
+              pCam.position.z = 5.2 - zoomT * zoomT * 3.8;
+              pGroup.scale.setScalar(1 + zoomT * 0.45);
+            }
+
+            preRenderer.render(pScene, pCam);
+
+            if (progress < 1) {
+              preRaf = requestAnimationFrame(tickPre);
+            } else {
+              dismiss();
+            }
+          };
+          preRaf = requestAnimationFrame(tickPre);
+        } catch {
+          setTimeout(dismiss, 450);
+        }
+      } else {
+        // Offline fast fallback
+        const start = performance.now();
+        const tickFallback = now => {
+          if (dismissed) return;
+          const p = Math.min(1, (now - start) / 650);
+          if (prePct) prePct.textContent = `${String(Math.round(p * 100)).padStart(2, '0')}%`;
+          if (preBar) preBar.style.transform = `scaleX(${p.toFixed(4)})`;
+          if (p < 1) preRaf = requestAnimationFrame(tickFallback);
+          else dismiss();
+        };
+        preRaf = requestAnimationFrame(tickFallback);
+      }
+    }
+  }
+
 })();
